@@ -7,7 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * @ClassName: com.example.demo.controller.UserController.java
+ * @Description:
+ * @author: zhongbo
+ * @date:  2020-01-22 17:41
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {

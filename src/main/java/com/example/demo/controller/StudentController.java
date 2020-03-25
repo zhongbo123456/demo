@@ -44,6 +44,14 @@ public class StudentController {
       return MyResultUtils.success(studentList);
     }
 
+    /**
+     * @MethodName:  update
+     * @param student
+     * @Return com.example.demo.model.MyResult<com.example.demo.entity.Student>
+     * @Description:
+     * @author: zhongbo
+     * @date:  2020-01-22 17:40
+     */
     @PutMapping("/update")
     public MyResult<Student> update(@Valid Student student){
         Student p=personService.update(student);

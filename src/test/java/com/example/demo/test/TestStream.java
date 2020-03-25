@@ -4,6 +4,7 @@ import com.example.demo.entity.Student;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class TestStream {
     public static void main(String[] args) {
@@ -23,15 +24,20 @@ public class TestStream {
             System.out.println("person = " + person);
         }*/
        //stream进行循环
-        list.stream().forEach(person -> System.out.println(person));
+        //list.stream().forEach(person -> System.out.println(person));
         //stream流中filter进行过滤
        // List<Person> collect = list.stream().filter(person -> person.getAge() > 20).collect(Collectors.toList());
         //System.out.println("collect = " + collect);
-        AtomicInteger a=new AtomicInteger(1001);
+        /*AtomicInteger a=new AtomicInteger(1001);
         a.set(1);
         System.out.println("a = " + a);
         a.getAndAdd(1);
-        System.out.println("a = " + a);
+        System.out.println("a = " + a);*/
+
+        Arrays.asList(1,2,3,4,5).stream().forEach(integer ->System.out.println(integer) );
+        List<Integer> collect = Arrays.asList(20, 12, 45, 78, 96, 52).stream().filter(integer -> integer > 50).collect(Collectors.toList());
+        System.out.println(collect);
+        Arrays.asList("aa","bb","cc","ab","ac","yy").stream().filter(s->s.contains("a")).forEach(a->System.out.println(a));
 
 
     }

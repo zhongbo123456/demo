@@ -24,4 +24,5 @@ public class MySerializer extends StdSerializer<Person> {
         jsonGenerator.writeStringField("id","20147710450");
         jsonGenerator.writeEndObject();
     }
+
 }
