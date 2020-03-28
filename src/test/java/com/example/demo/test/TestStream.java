@@ -1,11 +1,8 @@
 package com.example.demo.test;
 
-import com.example.demo.entity.Student;
-
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-
 public class TestStream {
     public static void main(String[] args) {
         List<Student> list=new ArrayList<>();
@@ -34,11 +31,19 @@ public class TestStream {
         a.getAndAdd(1);
         System.out.println("a = " + a);*/
 
-        Arrays.asList(1,2,3,4,5).stream().forEach(integer ->System.out.println(integer) );
+       /* Arrays.asList(1,2,3,4,5).stream().forEach(integer ->System.out.println(integer) );
         List<Integer> collect = Arrays.asList(20, 12, 45, 78, 96, 52).stream().filter(integer -> integer > 50).collect(Collectors.toList());
         System.out.println(collect);
-        Arrays.asList("aa","bb","cc","ab","ac","yy").stream().filter(s->s.contains("a")).forEach(a->System.out.println(a));
-
+        Arrays.asList("aa","bb","cc","ab","ac","yy").stream().filter(s->s.contains("a")).forEach(a->System.out.println(a));*/
+        Student student=new Student(1,"ab");
+        System.out.println("student:"+student.toString());
+        Student student1=new Student(2,"cc");
+        System.out.println("age:"+student.getAge());
+        if(student.getAge()==student1.getAge()){
+            System.out.println(true);
+        }else {
+            System.out.println(false);
+        }
 
     }
 }

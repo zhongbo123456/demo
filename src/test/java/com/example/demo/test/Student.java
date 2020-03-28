@@ -28,7 +28,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age!=null?age:20;
+        return age;
     }
 
     public void setAge(Integer age) {
