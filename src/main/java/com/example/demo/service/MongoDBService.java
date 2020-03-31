@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Course;
+import com.example.demo.model.MyResult;
 
 import java.util.List;
 
@@ -14,4 +15,8 @@ import java.util.List;
 public interface MongoDBService {
 
     List<Course> getAll();
+
+    MyResult update(Course course);
+
+    void delete(String name);
 }

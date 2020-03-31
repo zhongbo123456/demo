@@ -5,9 +5,7 @@ import com.example.demo.model.MyResult;
 import com.example.demo.service.MongoDBService;
 import com.example.demo.utils.MyResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +26,15 @@ public class MongoDBController {
         List<Course> list = mongoDBService.getAll();
         return MyResultUtils.success(list);
     }
+    @PutMapping("/update")
+    public MyResult update(Course course){
+        MyResult result= mongoDBService.update(course);
+        return MyResultUtils.success(result);
+    }
+    @DeleteMapping("/delete")
+    public MyResult delete(String name){
+        mongoDBService.delete(name);
+        return MyResultUtils.success();
+    }
+
 }

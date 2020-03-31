@@ -10,6 +10,13 @@ public class MyResultUtils {
         result.setObj(data);
         return result;
     }
+    public static MyResult success(){
+        MyResult result=new MyResult();
+        result.setCode(1);
+        result.setMsg("成功");
+        result.setObj(null);
+        return result;
+    }
 
     public static MyResult fail(){
         MyResult result=new MyResult();
