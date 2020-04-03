@@ -1,6 +1,7 @@
 package com.example.demo.serviceimpl;
 
 import com.example.demo.entity.Course;
+import com.example.demo.entity.Course1;
 import com.example.demo.model.MyResult;
 import com.example.demo.service.MongoDBService;
 import com.example.demo.utils.MyResultUtils;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.Fields;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -33,8 +35,12 @@ public class MongoDBServiceImpl implements MongoDBService {
     @Override
     public List<Course> getAll() {
         Criteria criteria=Criteria.where("price").gte(0);
-        Aggregation aggregation = Aggregation.newAggregation(Course.class,
+        Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.match(criteria)
+               /* ,
+                Aggregation.group("price")
+                .sum("price").as("value")*/
+                //Aggregation.project("price")
 
         );
         AggregationResults<Course> aggregate = mongoTemplate.aggregate(aggregation, COLLECTION_NAME, Course.class);
