@@ -21,6 +21,13 @@ import java.util.List;
 public class MongoDBController {
     @Autowired
     MongoDBService mongoDBService;
+
+    @PostMapping("/add")
+    public MyResult add(){
+        Course course=mongoDBService.add();
+        return MyResultUtils.success(course);
+    }
+
     @GetMapping("/getAll")
     public MyResult getAll(){
         List<Course> list = mongoDBService.getAll();
@@ -36,5 +43,6 @@ public class MongoDBController {
         mongoDBService.delete(name);
         return MyResultUtils.success();
     }
+
 
 }

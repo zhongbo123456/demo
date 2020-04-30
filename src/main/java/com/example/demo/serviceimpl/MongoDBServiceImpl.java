@@ -36,11 +36,11 @@ public class MongoDBServiceImpl implements MongoDBService {
     public List<Course> getAll() {
         Criteria criteria=Criteria.where("price").gte(0);
         Aggregation aggregation = Aggregation.newAggregation(
-                Aggregation.match(criteria)
+                Aggregation.match(criteria),
                /* ,
                 Aggregation.group("price")
                 .sum("price").as("value")*/
-                //Aggregation.project("price")
+                Aggregation.project("price","name")
 
         );
         AggregationResults<Course> aggregate = mongoTemplate.aggregate(aggregation, COLLECTION_NAME, Course.class);
@@ -60,5 +60,14 @@ public class MongoDBServiceImpl implements MongoDBService {
     public void delete(String name) {
         Criteria criteria = Criteria.where("name").is(name);
         DeleteResult remove = mongoTemplate.remove(Query.query(criteria), COLLECTION_NAME);
+    }
+
+    @Override
+    public Course add() {
+        Course course=new Course();
+        course.setName("pe");
+        course.setPrice(200);
+        Course save = mongoTemplate.save(course, COLLECTION_NAME);
+        return save;
     }
 }

@@ -19,4 +19,6 @@ public interface MongoDBService {
     MyResult update(Course course);
 
     void delete(String name);
+
+    Course add();
 }
