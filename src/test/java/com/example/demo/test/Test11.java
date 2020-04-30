@@ -1,6 +1,7 @@
 package com.example.demo.test;
 
 import com.alibaba.fastjson.JSON;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 
 import javax.xml.crypto.Data;
@@ -138,6 +139,87 @@ public class Test11 {
         }
 
 
+    }
+
+    @Test
+    public void test6(){
+        Student s=new Student(1,20,"文化路");
+        Optional<Student> optional = Optional.of(s);
+        Student student1 = optional.orElse(null);
+        System.out.println(student1);
+        Student s1=null;
+        Optional<Student> option2 = Optional.ofNullable(s1);
+        Student student2 = option2.orElse(null);
+        System.out.println(student2);
+        Student student = option2.orElseGet(() -> new Student(1, 20, "aa"));
+        System.out.println(student);
+        optional.ifPresent(student3 -> System.out.println(student3.getAddress()));
+        option2.ifPresent(student3 -> System.out.println(student3.getAddress()));
+
+        String unkown = optional.map(student3 -> student3.getAddress()).orElse("unkown");
+        System.out.println(unkown);
+        String aDefault = option2.map(student3 -> student3.getAddress()).orElse("default");
+        System.out.println(aDefault);
+
+        Student student3=new Student(1,2,"香樟路");
+        List<String> list=new ArrayList<>();
+        list.add("187310");
+        list.add("1457822");
+        student3.setPhones(list);
+        List<String> list1 = Optional.of(student3).flatMap(u -> Optional.ofNullable(u.getPhones())).orElse(Collections.emptyList());
+        System.out.println(list.isEmpty());
+
+
+
+    }
+
+    /**
+     * flatmap
+     */
+    @Test
+    public void test7(){
+        List<String> list1 = Arrays.asList("aa", "bb", "cc");
+        List<String> list2 = Arrays.asList("dd", "ee", "ff");
+        List<List<String>> totalList=new ArrayList<>();
+        totalList.add(list1);
+        totalList.add(list2);
+        System.out.println("totalList:"+totalList);//totalList:[[aa, bb, cc], [dd, ee, ff]]
+        //before java8
+        List<String> tempList=new ArrayList<>();
+        for (List<String> list : totalList) {
+            for (String s : list) {
+                tempList.add(s);
+            }
+        }
+        System.out.println("tempList"+tempList);//tempList[aa, bb, cc, dd, ee, ff]
+        //java8
+        List<String> collect = totalList.stream().flatMap(plist -> plist.stream()).collect(Collectors.toList());
+        System.out.println("collect"+collect);//collect[aa, bb, cc, dd, ee, ff]
+    }
+    @Test
+    public void test8(){
+        Long startTime1=1588232783000L;//2020-04-30 15:46:23
+        Long endTime2=1588250783000L;//2020-04-30 20:46:23
+        Date startTime=new Date(startTime1);
+        Date endTime=new Date(endTime2);
+
+        List<Long> startTimeList=new ArrayList<>();
+        List<Long> endTimeList=new ArrayList<>();
+        List<Date> startTimeDateList=new ArrayList<>();
+        List<Date> endTimeDateList=new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startTime);
+        System.out.println("1:"+calendar.getTime());
+        startTimeDateList.add(calendar.getTime());
+        while(calendar.getTimeInMillis()<endTime2){
+            calendar.add(Calendar.HOUR_OF_DAY,1);
+            System.out.println("2:"+calendar.getTime());
+            calendar.set(Calendar.MINUTE,0);
+            calendar.set(Calendar.SECOND,0);
+            System.out.println("3:"+calendar.getTime());
+            startTimeDateList.add(calendar.getTime());
+        }
+        System.out.println(startTimeDateList);
     }
 
 

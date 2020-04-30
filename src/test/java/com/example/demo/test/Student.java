@@ -1,10 +1,15 @@
 package com.example.demo.test;
 
+import lombok.Data;
+
+import java.util.List;
+@Data
 public class Student {
     private  int id;
     private Integer age;
     private String address;
     private Double height;
+    List<String> phones;
 
     public Student(String address, Double height) {
         this.address = address;
@@ -38,36 +43,4 @@ public class Student {
         this.address = address;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                '}';
-    }
 }
