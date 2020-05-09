@@ -2,7 +2,6 @@ package com.example.demo.test;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -12,10 +11,10 @@ import java.util.*;
  * @Author: zhongbo
  * @Date: 2020/5/6 15:11
  */
-public class Test15 {
+public class Test16 {
     @Test
     public void test1(){
-        List<Map<String, Long>> list = Test15.getperHourInterval(null);
+        List<Map<String, Long>> list = Test16.getperHourInterval(null);
         list.forEach(stringLongMap -> {
             Long startTime = stringLongMap.get("start");
             Long endTime = stringLongMap.get("end");
@@ -33,16 +32,16 @@ public class Test15 {
      */
     public static List<Map<String, Long>> getperHourInterval(String s) {
         List<Map<String,Long>> list=new ArrayList<>();
-        Long yesterday23Hour = Test15.getTodayTimeInterval(23, "yesterday");
-        Long yesterday24Hour = Test15.getDayEndTime("yesterday");
+        Long yesterday23Hour = Test16.getTodayTimeInterval(23, "yesterday");
+        Long yesterday24Hour = Test16.getDayEndTime("yesterday");
         Map<String,Long> yesterdayHour=new HashMap<>();
         yesterdayHour.put("start",yesterday23Hour);
         yesterdayHour.put("end",yesterday24Hour);
         list.add(yesterdayHour);
         for (int i = 0; i <23; i++) {
             Map<String,Long> map=new HashMap<>();
-            Long zeroTime= Test15.getTodayTimeInterval(i,s);
-            Long oneTime=Test15.getTodayTimeInterval((i+1),s);
+            Long zeroTime= Test16.getTodayTimeInterval(i,s);
+            Long oneTime= Test16.getTodayTimeInterval((i+1),s);
             map.put("start",zeroTime);
             map.put("end",oneTime);
             list.add(map);
@@ -50,7 +49,7 @@ public class Test15 {
         Map<String,Long> map=new HashMap<>();
         Map<String, Long> stringLongMap = list.get(list.size() - 1);
         map.put("start",stringLongMap.get("end"));
-        map.put("end",Test15.getDayEndTime(s));
+        map.put("end", Test16.getDayEndTime(s));
         list.add(map);
         return list;
     }

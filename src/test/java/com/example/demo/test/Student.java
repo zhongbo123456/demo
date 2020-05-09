@@ -43,4 +43,10 @@ public class Student {
         this.address = address;
     }
 
+    public Student(int id, Integer age, String address, Double height) {
+        this.id = id;
+        this.age = age;
+        this.address = address;
+        this.height = height;
+    }
 }

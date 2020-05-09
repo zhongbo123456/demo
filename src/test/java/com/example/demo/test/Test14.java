@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @BelongProjecet demo
@@ -43,6 +44,21 @@ public class Test14 {
         System.out.println(CollectionUtils.isEqualCollection(list1, list2));//false
        List<String> list4=new ArrayList<>();
         System.out.println(CollectionUtils.isEqualCollection(list, list4));//true
+
+
+    }
+    @Test
+    public void test2(){
+        Student student1=new Student(1,20,"aa",20.0);
+        Student student2=new Student(2,21,"bb",20.0);
+        Student student3=new Student(1,20,"aa",20.0);
+        Student student4=new Student(2,21,"bb",20.0);
+        List<Student> list=new ArrayList<>();
+        list.add(student1);
+        list.add(student2);
+        list.add(student3);
+        list.add(student4);
+
 
 
     }
