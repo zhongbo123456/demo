@@ -110,12 +110,12 @@ public class Test13 {
      */
     @Test
     public void test5(){
-        Student student1=new Student(2,2);//0
-        Student student2=new Student(1,3);//2
-        Student student3=new Student(1,4);//3
-        Student student4=new Student(1,5);//4
-        Student student5=new Student(1,6);//5
-        Student student6=new Student(1,7);//6
+        Student student1=new Student("a",2.0);//0
+        Student student2=new Student("a",3.0);//2
+        Student student3=new Student("c",null);//3
+        Student student4=new Student("a",5.0);//4
+        Student student5=new Student("a",6.0);//5
+        Student student6=new Student("a",7.1);//6
         List<Student> list=new ArrayList<>();
         list.add(student1);
         list.add(student2);
@@ -123,8 +123,8 @@ public class Test13 {
         list.add(student4);
         list.add(student5);
         list.add(student6);
-        Optional<Integer> reduce = list.stream().map(student -> student.getAge() - student.getId()).reduce((x, y) -> x + y);
-        System.out.println(reduce.get());
+        double sum = list.stream().filter(student -> student.getHeight()!=null).mapToDouble(s->s.getHeight()).sum();
+        System.out.println(sum);
 
 
     }
