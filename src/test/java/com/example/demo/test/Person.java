@@ -9,13 +9,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonSerialize(using =MySerializer.class )
 public class Person {
     private String name;
-    private  int age;
+    private  Integer age;
     private String address;
 
     public Person() {
     }
 
-    public Person(String name, int age, String address) {
+    public Person(String name, Integer age, String address) {
         this.name = name;
         this.age = age;
         this.address = address;
@@ -29,11 +29,11 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
