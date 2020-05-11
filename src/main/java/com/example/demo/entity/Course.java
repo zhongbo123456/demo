@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 /**
  * @BelongProjecet demo
@@ -11,12 +12,19 @@ import lombok.Data;
  */
 @Data
 public class Course {
-    /**
-     * 名称
-     */
     private String name;
     /**
      * 价钱
      */
     private Integer price;
+
+    public Course() {
+    }
+
+    public Course(String name, Integer price) {
+        this.name = name;
+        this.price = price;
+    }
+
+
 }
