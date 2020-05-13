@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Person;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
@@ -16,4 +17,6 @@ import java.util.List;
 public interface PersonRepository extends MongoRepository<Person, ObjectId> {
     List<Person>  findByAge(Integer age);
     List<Person> findBySex(Integer sex);
+    List<Person> findByNameLike(String name);
+    List<Person> findAllByNameAndAge(String name,Integer age);
 }

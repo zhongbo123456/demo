@@ -3,8 +3,7 @@ package com.example.demo.test;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -90,5 +89,71 @@ public class Test17 {
 
         });
         return flag.get();
+    }
+
+    /**
+     * map
+     */
+    @Test
+    public void test3(){
+        Map<String,Integer> map1=new HashMap<>();
+        map1.put("zhangsan",20);
+        map1.put("lisi",21);
+        map1.put("wangwu",22);
+        map1.put("zhaoliu",20);
+        System.out.println("map1:"+map1);
+
+        Map<String,Integer> map2=new HashMap<>();
+        map2.put("aa",100);
+        map2.put("bb",50);
+        System.out.println("map2:"+map2);
+        //从指定映射中将所有映射关系复制到此映射中。
+        map1.putAll(map2);
+        System.out.println(map1);
+        // remove() 删除关联对象，指定key对象
+        map1.remove("zhaoliu");
+        System.out.println("使用remove："+map1);
+        // clear() 清空集合对象
+        map2.clear();
+        System.out.println("使用clear："+map2);
+        //get()
+        System.out.println(map1.get("aa"));
+        //size()
+        System.out.println(map1.size());
+        // boolean isEmpty() 长度为0返回true否则false
+        System.out.println(map1.isEmpty());
+        // boolean containsKey(Object key) 判断集合中是否包含指定的key
+        System.out.println(map1.containsKey("aa"));
+        // boolean containsValue(Object value)
+        System.out.println(map1.containsValue(100));
+        //键变量
+        for (String s : map1.keySet()) {
+            System.out.println(s);
+        }
+     System.out.println();
+        //值遍历
+        for (Integer value : map1.values()) {
+            System.out.println(value);
+        }
+        System.out.println();
+        //键值对遍历
+        for (Map.Entry<String, Integer> stringIntegerEntry : map1.entrySet()) {
+            System.out.println(stringIntegerEntry.getKey());
+            System.out.println(stringIntegerEntry.getValue());
+        }
+        //treeMap
+        //TreeMap中的元素默认按照keys的自然排序排列。
+        //（对Integer来说，其自然排序就是数字的升序；对String来说，其自然排序就是按照字母表排序）
+        //TreeMap(Comparator comparator)：创建一个空TreeMap，按照指定的comparator排序
+        Map<Integer,String> map3=new TreeMap<>(Comparator.reverseOrder());
+        map3.put(1,"ee");
+        map3.put(2,"dd");
+        map3.put(3,"cc");
+        map3.put(4,"bb");
+        map3.put(5,"aa");
+        for (Map.Entry<Integer, String> integerStringEntry : map3.entrySet()) {
+            System.out.println(integerStringEntry.getKey() + "," + integerStringEntry.getValue());
+        }
+
     }
 }
