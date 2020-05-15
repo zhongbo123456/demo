@@ -3,25 +3,76 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.validation.constraints.*;
+import java.util.List;
 
-@Data
+
 public class Student {
-    @NotNull(message = "传入的值是空，请传值")
     private int id;
-    @NotNull(message = "name传入的值是空，请传值")
-    @org.apache.bval.constraints.NotEmpty(message = "name传入的值不能是空字符串")
     private String name;
-    @Min(1)
-    @Max(20)
-    @NotNull(message = "age传入的值是空，请传值")
     private Integer age;
-
-    @NotNull(message = "sex传入的值是空，请传值")
     private String sex;
-
-
-    @NotNull(message = "address传入的值是空，请传值")
     private String address;
+    private List<String> courseNames;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<String> getCourseNames() {
+        return courseNames;
+    }
+
+    public void setCourseNames(List<String> courseNames) {
+        this.courseNames = courseNames;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                ", courseNames=" + courseNames +
+                '}';
+    }
 }
 
 

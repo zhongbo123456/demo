@@ -11,8 +11,7 @@ import lombok.Data;
  */
 @Data
 public class Course1 {
-    private Integer value;
-    private Integer age;
-    private String address;
+    private String name;
+    private Integer studentId;
 
 }

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.PersonMapper">
+    <resultMap id="resultMap" type="com.example.demo.entity.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+       <collection property="courseNames" ofType="java.lang.String">
+          <constructor>
+              <arg column="course_name"/>
+          </constructor>
+       </collection>
+    </resultMap>
+
     <update id="update">
         update student
         <set>
@@ -28,8 +41,35 @@
         select * from student where id=#{id}
     </select>
 
-    <select id="selectAll" resultType="com.example.demo.entity.Student">
-        select * from student
+    <select id="selectAll" resultMap="resultMap">
+           SELECT
+	s.id,
+	s.NAME,
+	s.sex,
+	s.age,
+	s.address,
+	c.course_name
+FROM
+	student s,
+	course c
+WHERE
+	s.id = c.student_id
+    </select>
+    <select id="selectByName" resultMap="resultMap">
+    SELECT
+	s.id,
+	s.NAME,
+	s.sex,
+	s.age,
+	s.address,
+	c.course_name
+FROM
+	student s,
+	course c
+WHERE
+	s.id = c.student_id
+	AND s.NAME =#{name}
+
     </select>
 
 </mapper>

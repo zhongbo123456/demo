@@ -87,7 +87,7 @@ public class MongodbTest {
         Person person=new Person();
         person.setName("李四");
         person.setAge(21);
-        person.setSex(0);
+        person.setSex(1);
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
                 .withMatcher("sex", ExampleMatcher.GenericPropertyMatchers.exact());
