@@ -1,0 +1,27 @@
+package com.example.demo.entity;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+
+/**
+ * @BelongProjecet demo
+ * @BelongPackage com.example.demo.entity
+ * @Description:
+ * @Author: zhongbo
+ * @Date: 2020/5/19 14:25
+ */
+@Component
+public class UserBean{
+
+    @Value("${name:zhangsan}")
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

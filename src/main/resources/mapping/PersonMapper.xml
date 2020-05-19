@@ -71,5 +71,16 @@ WHERE
 	AND s.NAME =#{name}
 
     </select>
+    <select id="selectByNameLike" resultType="com.example.demo.entity.Student">
+        select *
+        from student s
+        where s.name like  concat('%',#{name},'%')
+    </select>
+    <select id="selectByNameLike1" resultType="com.example.demo.entity.Student">
+         select *
+        from student s
+        where s.name like "%"#{name}"%"
+    </select>
+
 
 </mapper>

@@ -15,4 +15,8 @@ public interface PersonMapper {
     List<Student> selectByName(@Param("name") String name);
 
     Integer update(Student student);
+
+    List<Student> selectByNameLike(@Param("name")String name);
+    List<Student> selectByNameLike1(@Param("name") String name);
+
 }
