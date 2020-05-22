@@ -3,7 +3,12 @@
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
     <select id="login" resultType="com.example.demo.entity.User">
-        select * from user where username=#{username} and password=#{password}
+              select
+               * from
+                         user
+
+               where
+                       username=#{username} and password=#{password}
     </select>
 
 
