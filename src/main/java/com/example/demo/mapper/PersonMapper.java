@@ -1,12 +1,13 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.Student;
+import com.example.demo.entity.Student1;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
 public interface PersonMapper {
     Student selectById(int id);
 
@@ -29,6 +30,6 @@ public interface PersonMapper {
      * @param list
      * @return
      */
-    List<Student> getData(@Param("list") List<Student> list);
+    List<Student1> getData(@Param("list") List<Student1> list);
 
 }

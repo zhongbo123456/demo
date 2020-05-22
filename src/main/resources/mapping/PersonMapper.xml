@@ -91,12 +91,12 @@ WHERE
             </if>
         </where>
     </select>
-    <select id="getData" resultType="com.example.demo.entity.Student">
-        select age,sex,address
-        from student
-        where name in
+    <select id="getData" resultType="Student1">
+        select  s.s_name,s.age,s.sex,s.address
+        from student1 s
+        where s.s_name  in
         <foreach collection="list" item="item" open="(" separator="," close=")">
-            #{item.name}
+            #{item.sName}
         </foreach>
     </select>
 

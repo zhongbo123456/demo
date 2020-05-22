@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Student;
+import com.example.demo.entity.Student1;
 import com.example.demo.model.MyResult;
 import com.example.demo.service.PersonService;
 import com.example.demo.utils.MyResultUtils;
@@ -58,6 +59,12 @@ public class StudentController {
         Student p = personService.update(student);
         return MyResultUtils.success(p);
 
+    }
+
+    @PostMapping("/getData")
+    public MyResult<List<Student1>> getData(@RequestBody List<Student1> list){
+        List<Student1> list1= personService.getData(list);
+        return MyResultUtils.success(list);
     }
 
 

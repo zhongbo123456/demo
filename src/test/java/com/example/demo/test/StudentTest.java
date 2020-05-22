@@ -1,5 +1,6 @@
 package com.example.demo.test;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.entity.Student;
 import com.example.demo.mapper.PersonMapper;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -72,4 +74,14 @@ public class StudentTest {
         System.out.println(list2.toString());
 
     }
+
+    /**
+     * 传入和返回都是相同list
+     */
+    @Test
+    public void test4() {
+
+    }
+
+
 }
