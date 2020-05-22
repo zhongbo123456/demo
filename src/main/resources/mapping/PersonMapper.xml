@@ -7,11 +7,11 @@
         <result column="age" property="age"/>
         <result column="sex" property="sex"/>
         <result column="address" property="address"/>
-       <collection property="courseNames" ofType="java.lang.String">
-          <constructor>
-              <arg column="course_name"/>
-          </constructor>
-       </collection>
+        <collection property="courseNames" ofType="java.lang.String">
+            <constructor>
+                <arg column="course_name"/>
+            </constructor>
+        </collection>
     </resultMap>
 
     <update id="update">
@@ -57,8 +57,8 @@ WHERE
     </select>
     <select id="selectByName" resultMap="resultMap">
     SELECT
-	s.id,
-	s.NAME,
+	   s.id,
+	    s.NAME,
 	s.sex,
 	s.age,
 	s.address,
@@ -79,7 +79,25 @@ WHERE
     <select id="selectByNameLike1" resultType="com.example.demo.entity.Student">
          select *
         from student s
-        where s.name like "%"#{name}"%"
+        where name like "%"#{name}"%"
+    </select>
+    <select id="selectByNameLike2" resultType="com.example.demo.entity.Student">
+        select *
+        from student s
+        <where>
+            <if test="name!=null">
+                <bind name="pattern" value=" '%'+name+'%' "/>
+                and s.name like #{pattern}
+            </if>
+        </where>
+    </select>
+    <select id="getData" resultType="com.example.demo.entity.Student">
+        select age,sex,address
+        from student
+        where name in
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item.name}
+        </foreach>
     </select>
 
 

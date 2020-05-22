@@ -18,48 +18,47 @@ public class StudentController {
     @Autowired
     PersonService personService;
 
-        /**
-         * @MethodName:  selectById
-         * @param id
-         * @Description: 根据id查询
-         * @author: zhongbo
-         * @date:  2020/1/19 16:09
-         */
+    /**
+     * @param id
+     * @MethodName: selectById
+     * @Description: 根据id查询
+     * @author: zhongbo
+     * @date: 2020/1/19 16:09
+     */
     @GetMapping("/select/{id}")
-    public MyResult<Student> selectById(@PathVariable int id){
-        Student p=personService.selectById(id);
+    public MyResult<Student> selectById(@PathVariable int id) {
+        Student p = personService.selectById(id);
         return MyResultUtils.success(p);
 
-    }
-        /**
-         * @MethodName:  selectAll
-         * @param
-         * @Description: 查询所有
-         * @author: zhongbo
-         * @date:  2020/1/19 16:09
-         */
-    @GetMapping("/selectAll")
-    public MyResult<List<Student>> selectAll(){
-      List<Student> studentList = personService.selectAll();
-      return MyResultUtils.success(studentList);
     }
 
     /**
-     * @MethodName:  update
+     * @param
+     * @MethodName: selectAll
+     * @Description: 查询所有
+     * @author: zhongbo
+     * @date: 2020/1/19 16:09
+     */
+    @GetMapping("/selectAll")
+    public MyResult<List<Student>> selectAll() {
+        List<Student> studentList = personService.selectAll();
+        return MyResultUtils.success(studentList);
+    }
+
+    /**
      * @param student
+     * @MethodName: update
      * @Return com.example.demo.model.MyResult<com.example.demo.entity.Student>
      * @Description:
      * @author: zhongbo
-     * @date:  2020-01-22 17:40
+     * @date: 2020-01-22 17:40
      */
     @PutMapping("/update")
-    public MyResult<Student> update(@Valid Student student){
-        Student p=personService.update(student);
+    public MyResult<Student> update(@Valid Student student) {
+        Student p = personService.update(student);
         return MyResultUtils.success(p);
 
-
     }
-
 
 
 }

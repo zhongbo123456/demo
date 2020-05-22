@@ -14,6 +14,21 @@ public class Student {
     private String address;
     private List<String> courseNames;
 
+    public Student() {
+    }
+
+    public Student(int id, Integer age, String address) {
+        this.id = id;
+        this.age = age;
+        this.address = address;
+    }
+
+    public Student(int id, String address) {
+        this.id = id;
+        this.address = address;
+    }
+
+
     public int getId() {
         return id;
     }
