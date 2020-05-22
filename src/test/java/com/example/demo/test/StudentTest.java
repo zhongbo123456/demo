@@ -75,13 +75,6 @@ public class StudentTest {
 
     }
 
-    /**
-     * 传入和返回都是相同list
-     */
-    @Test
-    public void test4() {
-
-    }
 
 
 }

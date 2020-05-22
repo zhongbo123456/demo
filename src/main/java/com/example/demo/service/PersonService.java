@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Student;
 import com.example.demo.entity.Student1;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
@@ -19,4 +20,6 @@ public interface PersonService {
     Student update(Student student);
 
     List<Student1> getData(List<Student1> list);
+
+    void exportData(HttpServletResponse response,String [] title);
 }

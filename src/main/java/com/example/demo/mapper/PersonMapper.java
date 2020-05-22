@@ -32,4 +32,5 @@ public interface PersonMapper {
      */
     List<Student1> getData(@Param("list") List<Student1> list);
 
+    List<Student> queryData();
 }

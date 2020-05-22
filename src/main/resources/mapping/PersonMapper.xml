@@ -99,6 +99,11 @@ WHERE
             #{item.sName}
         </foreach>
     </select>
+    <select id="queryData" resultType="com.example.demo.entity.Student">
+        select
+        s.name,s.age,s.sex,s.address
+        from student s
+    </select>
 
 
 </mapper>
