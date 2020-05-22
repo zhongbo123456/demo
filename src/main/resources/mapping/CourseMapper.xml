@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+
+
+    <select id="aff">
+              SELECT
+	                          s.id,
+	s.NAME,
+	s.sex,
+	s.age,
+	                         s.address,
+	c.course_name
+FROM
+	                                student s,
+	course c
+WHERE
+	s.id = c.student_id
+    </select>
+</mapper>
