@@ -30,4 +30,30 @@ public class Test18 {
         System.out.println(JSON.toJSONString(b));
 
     }
+
+    /**
+     * 转义
+     */
+    @Test
+    public void test3(){
+        String s="aa|bb|cc|dd";
+        String[] split = s.split("\\|");
+        for (int i = 0; i < split.length; i++) {
+            System.out.println(split[i]);
+        }
+
+        String s1="ee//ff//gg";
+        String[] split1 = s1.split("\\//");
+        for (int i = 0; i < split1.length; i++) {
+            System.out.println(split1[i]);
+        }
+
+        String s2="hh'ii'jj";
+        String[] split2 = s2.split("\'");
+        //String[] split2 = s2.split("\\'");
+        for (String s3 : split2) {
+            System.out.println(s3);
+        }
+
+    }
 }
