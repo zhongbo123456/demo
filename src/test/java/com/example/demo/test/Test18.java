@@ -2,10 +2,12 @@ package com.example.demo.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @BelongProjecet demo
@@ -123,6 +125,52 @@ public class Test18 {
        int [] a={1,2,3,4,5,6};
         String string = Arrays.toString(a);
         System.out.println(string);
+    }
+
+
+    /**
+     * Arrays.asList()方法创建的 ArrayList是Arrays中的ArrayList，这个并没有实现remove方法，
+     * 调用list.remove()方法时，以其实现类中的方法为最准，但是这个Arrays中的ArrayList没有实现remove方法
+     */
+    @Test
+    public void test8(){
+        //1
+        List<Integer> list1=new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+        list1.add(4);
+        System.out.println("list11:"+list1.toString());
+        list1.remove(list1.size()-1);
+        System.out.println("list12:"+list1.toString());
+
+        //2
+        ArrayList<Integer> integers = Lists.newArrayList(1, 2, 3, 4);
+        System.out.println("integers1:"+integers.toString());
+        integers.remove(integers.size()-1);
+        System.out.println("integers2:"+integers.toString());
+
+
+
+        List<Integer> list = Arrays.asList(1, 2, 3, 4);
+        System.out.println("list1:"+list.toString());
+
+        //3
+        List<Integer> list2 = list.subList(0, list.size() - 1);
+        System.out.println("list2:"+list2);
+
+        //4
+        List<Integer> collect = list.stream().limit(list.size() - 1).collect(Collectors.toList());
+        System.out.println("collect:"+collect);
+
+        //5 报错
+        list.remove(list.size()-1);
+        System.out.println("list22222:"+list.toString());
+
+
+
+
+
     }
 
 }
