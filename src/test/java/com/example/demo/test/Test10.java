@@ -19,7 +19,7 @@ public class Test10 {
         fillWith(student,s);
         System.out.println("student:"+student);
     }
-
+    @Deprecated
     private void fillWith(Student student, String s) {
         student.setAddress(s);
     }

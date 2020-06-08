@@ -3,6 +3,7 @@ package com.example.demo.utils;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.metadata.BaseRowModel;
 import com.alibaba.excel.metadata.Sheet;
+import com.example.demo.common.MyException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedInputStream;
@@ -22,7 +23,7 @@ public class ExcelUtils {
     public static List<Object> getList(MultipartFile file, Class<? extends BaseRowModel> clazz){
         boolean empty = file.isEmpty();
         if(empty){
-
+            throw new MyException("请上传excel",400);
         }
         InputStream inputStream=null;
         try {

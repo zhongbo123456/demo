@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,11 +19,66 @@ import java.util.stream.Stream;
  * @Date: 2020/5/12 14:29
  */
 public class Test18 {
+    private static final Logger logger = LoggerFactory.getLogger(Test18.class);
+
+    @Test
+    public void test13(){
+        String s="aljfalsl_B";
+        boolean b = s.contains("_B");
+        System.out.println(b);
+    }
+
+    @Test
+    public void test12(){
+        String substring = UUID.randomUUID().toString().substring(0, 6);
+        String s = substring + "_A";
+        System.out.println(s);
+    }
+
+    @Test
+    public void test11(){
+        try {
+            Student student=null;
+            Integer age = student.getAge();
+            Student student1=new Student();
+            student1.setAge(age);
+        } catch (Exception e) {
+           logger.error("异常",e);
+        }
+    }
+
+
+    @Test
+    public void  test10(){
+        List<String> list=new ArrayList<>();
+        list.add(null);
+        list.add("z");
+        list.add("z1");
+        list.add("z2");
+        list.add(null);
+        list.add("z3");
+        System.out.println("size:"+list.size());
+        System.out.println(list.toString());
+        List<String> collect = list.stream().filter(s -> s != null).collect(Collectors.toList());
+        System.out.println(collect.toString());
+    }
+
+    @Test
+    public void test9(){
+        Random random = new Random();
+        String result="";
+        for (int i=0;i<6;i++)
+        {
+            result+=random.nextInt(10);
+        }
+        System.out.println(result);
+    }
+
     @Test
     public void test1(){
         String s = UUID.randomUUID().toString();
         System.out.println(s);
-        String substring = s.substring(0, 8);
+        String substring = s.substring(0, 6);
         System.out.println(substring);
 
     }
