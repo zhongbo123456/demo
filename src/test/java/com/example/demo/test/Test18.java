@@ -23,7 +23,7 @@ public class Test18 {
 
     @Test
     public void test13(){
-        String s="aljfalsl_B";
+        String s="aljfalslBDABC";
         boolean b = s.contains("_B");
         System.out.println(b);
     }
