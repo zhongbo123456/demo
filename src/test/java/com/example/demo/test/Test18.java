@@ -6,7 +6,12 @@ import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,10 +27,67 @@ public class Test18 {
     private static final Logger logger = LoggerFactory.getLogger(Test18.class);
 
     @Test
+    public void test15() throws ParseException {
+        //开始日期从2019年1月1日开始
+        LocalDate startLocalDate = LocalDate.of(2019, 1 ,1);
+        int startYear = startLocalDate.getYear();
+        //当前日期
+        LocalDate now=LocalDate.now();
+        //开始日期与当前日期的差值
+        Period period = Period.between(startLocalDate, now);
+        int years = period.getYears();
+        int months = period.getMonths();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM");
+        List<ProductCount> list=new ArrayList<>();
+
+        for (int i = 0; i <= years; i++) {
+            for (int j = 1; j <= 12; j++) {
+                ProductCount productCount = new ProductCount();
+                Date data = simpleDateFormat.parse(startYear + "-" + j);
+                productCount.setMonth(data);
+                list.add(productCount);
+            }
+        }
+
+
+
+
+        System.out.println(list.toString());
+
+    }
+
+
+    @Test
+    public void test14(){
+        LocalDate startLocalDate = LocalDate.of(2019, 1 ,1);
+        LocalDate now=LocalDate.of(2019,6,2);
+        Period period = Period.between(startLocalDate, now);
+        int years = period.getYears();
+        System.out.println("years:"+years);
+        Integer startYear=startLocalDate.getYear();
+        for (int i = 0; i <= years; i++) {
+            for (int j = 1; j <= 6; j++) {
+                System.out.println(startYear +"-"+ j);
+                String s = startYear + "-" + (j + 1);
+                System.out.println(s);
+
+            }
+            startYear+=1;
+        }
+
+    }
+
+    @Test
     public void test13(){
         String s="aljfalslBDABC";
         boolean b = s.contains("_B");
         System.out.println(b);
+        Calendar calendar=Calendar.getInstance();
+        calendar.set(2020,6,12);
+        Date time = calendar.getTime();
+        int month = time.getMonth();
+        System.out.println(month);
+
     }
 
     @Test
