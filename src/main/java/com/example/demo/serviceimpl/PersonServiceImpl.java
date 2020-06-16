@@ -1,9 +1,18 @@
 package com.example.demo.serviceimpl;
 
+import com.alibaba.excel.EasyExcelFactory;
+import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.support.ExcelTypeEnum;
+import com.alibaba.fastjson.JSON;
+import com.example.demo.common.MyException;
+import com.example.demo.entity.ExcelStudent;
 import com.example.demo.entity.Student;
 import com.example.demo.entity.Student1;
 import com.example.demo.mapper.PersonMapper;
 import com.example.demo.service.PersonService;
+import com.example.demo.utils.ExcelUtils;
+import com.example.demo.utils.MyResultUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -12,6 +21,7 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
@@ -19,6 +29,7 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -71,6 +82,53 @@ public class PersonServiceImpl implements PersonService {
             generateExcel(list,title,response);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void excelData(HttpServletResponse response) {
+        List<Student> list = personMapper.selectAll1();
+        if(CollectionUtils.isEmpty(list)){
+            throw new MyException("无数据",400);
+        }
+        List<ExcelStudent> sList=new ArrayList<>(list.size());
+        list.forEach(student -> {
+            ExcelStudent s=new ExcelStudent();
+            s.setName(student.getName());
+            s.setAge(student.getAge());
+            s.setSex(student.getSex());
+            s.setAddress(student.getAddress());
+            sList.add(s);
+        });
+        // 2.使用ExcelWriter
+        ExcelWriter excelWriter = null;
+        try {
+            excelWriter = EasyExcelFactory.getWriter(response.getOutputStream(), ExcelTypeEnum.XLSX, Boolean.TRUE);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        // 3.设置响应头
+        String fileName = System.currentTimeMillis() + ".xlsx";
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+        // 4.导出excel
+        com.alibaba.excel.metadata.Sheet sheet = new com.alibaba.excel.metadata.Sheet(1, 0);
+        sheet.setAutoWidth(Boolean.TRUE);
+        sheet.setSheetName("设备类型");
+        sheet.setClazz(sList.get(0).getClass());
+        excelWriter.write(sList, sheet);
+        excelWriter.finish();
+
+
+    }
+
+    @Override
+    public void importData(MultipartFile file) {
+        List<Object> list = ExcelUtils.getList(file, ExcelStudent.class);
+        if(CollectionUtils.isNotEmpty(list)){
+            list.forEach(o -> {
+                Student student = JSON.parseObject(JSON.toJSONString(o), Student.class);
+                personMapper.insert(student);
+            });
         }
     }
 

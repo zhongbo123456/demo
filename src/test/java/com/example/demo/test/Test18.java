@@ -27,6 +27,18 @@ public class Test18 {
     private static final Logger logger = LoggerFactory.getLogger(Test18.class);
 
     @Test
+    public void test16(){
+        String a="abcdef_B";
+
+        String[] s = a.split("_");
+        if(s[1]=="B"){
+            System.out.println(true);
+        }else {
+            System.out.println(false);
+        }
+    }
+
+    @Test
     public void test15() throws ParseException {
         //开始日期从2019年1月1日开始
         LocalDate startLocalDate = LocalDate.of(2019, 1 ,1);

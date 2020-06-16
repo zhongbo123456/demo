@@ -12,7 +12,12 @@ public interface PersonMapper {
     Student selectById(int id);
 
 
+    Integer insert(Student student);
+
+
     List<Student> selectAll();
+
+    List<Student> selectAll1();
 
     List<Student> selectByName(@Param("name") String name);
 

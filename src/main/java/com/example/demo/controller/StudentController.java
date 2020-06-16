@@ -8,6 +8,7 @@ import com.example.demo.utils.MyResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -69,7 +70,7 @@ public class StudentController {
     }
 
     /**
-     * 数据导入excel表格然后下载
+     * 数据导入excel表格然后下载（带title）
      * @param response
      * @param title
      * @return
@@ -78,6 +79,21 @@ public class StudentController {
     public void exportData(@RequestParam("title") String[] title,
                                HttpServletResponse response) {
         personService.exportData(response,title);
+    }
+
+    /**
+     * 导入excel
+     * @param response
+     */
+    @GetMapping("/excel")
+    public void excelData(HttpServletResponse response){
+        personService.excelData(response);
+    }
+
+
+    @PostMapping("/import")
+    public void importData(MultipartFile file){
+        personService.importData(file);
     }
 
 
