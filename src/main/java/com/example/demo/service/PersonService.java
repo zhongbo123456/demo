@@ -27,4 +27,6 @@ public interface PersonService {
     void excelData(HttpServletResponse response);
 
     void importData(MultipartFile file);
+
+    void updateSecond(Integer integer);
 }

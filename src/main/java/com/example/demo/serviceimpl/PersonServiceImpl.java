@@ -34,6 +34,7 @@ import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+    public static Integer second=3000;
 
     @Autowired
     PersonMapper personMapper;
@@ -127,9 +128,22 @@ public class PersonServiceImpl implements PersonService {
         if(CollectionUtils.isNotEmpty(list)){
             list.forEach(o -> {
                 Student student = JSON.parseObject(JSON.toJSONString(o), Student.class);
-                personMapper.insert(student);
+                try {
+                    System.out.println(second);
+                    Thread.sleep(second);
+                    personMapper.insert(student);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             });
         }
+    }
+
+    @Override
+    public void updateSecond(Integer integer) {
+        second=integer;
+
     }
 
     private void generateExcel(List<Student> list, String[] title, HttpServletResponse response) throws IOException {

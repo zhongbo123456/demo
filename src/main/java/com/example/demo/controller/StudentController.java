@@ -96,5 +96,11 @@ public class StudentController {
         personService.importData(file);
     }
 
+    @GetMapping("/updateSecond")
+    public MyResult updateSecond(Integer integer){
+        personService.updateSecond(integer);
+        return MyResultUtils.success();
+    }
+
 
 }
