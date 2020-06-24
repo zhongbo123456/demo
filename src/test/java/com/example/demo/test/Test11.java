@@ -3,7 +3,7 @@ package com.example.demo.test;
 import com.alibaba.fastjson.JSON;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
-
+import com.example.demo.test.Student;
 import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -18,6 +18,12 @@ import java.util.stream.Stream;
  * @Date: 2020/4/24 9:13
  */
 public class Test11 {
+
+    @Test
+    public void test9(){
+        Student student=new Student();
+        System.out.println(student.getId());
+    }
     @Test
     public void test1(){
         Student student1=new Student(1,"a");

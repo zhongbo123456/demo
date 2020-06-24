@@ -1,3 +1,4 @@
+/*
 package com.example.demo.test;
 
 import com.alibaba.fastjson.JSON;
@@ -16,13 +17,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+*/
 /**
  * @BelongProjecet demo
  * @BelongPackage com.example.demo.test
  * @Description:
  * @Author: zhongbo
  * @Date: 2020/5/12 14:29
- */
+ *//*
+
 public class Test18 {
     private static final Logger logger = LoggerFactory.getLogger(Test18.class);
 
@@ -38,7 +41,8 @@ public class Test18 {
         }
     }
 
-    @Test
+   */
+/* @Test
     public void test15() throws ParseException {
         //开始日期从2019年1月1日开始
         LocalDate startLocalDate = LocalDate.of(2019, 1 ,1);
@@ -66,7 +70,8 @@ public class Test18 {
 
         System.out.println(list.toString());
 
-    }
+    }*//*
+
 
 
     @Test
@@ -165,9 +170,11 @@ public class Test18 {
 
     }
 
-    /**
+    */
+/**
      * 转义
-     */
+     *//*
+
     @Test
     public void test3(){
         String s="aa|bb|cc|dd";
@@ -221,9 +228,11 @@ public class Test18 {
         }
     }
 
-    /**
+    */
+/**
      * stream 分组
-     */
+     *//*
+
     @Test
     public void test6(){
         List<Apple> list=new ArrayList<>();
@@ -248,9 +257,11 @@ public class Test18 {
 
     }
 
-    /**
+    */
+/**
      * 数组输出Arrays.toString()
-     */
+     *//*
+
     @Test
     public void test7(){
        int [] a={1,2,3,4,5,6};
@@ -259,10 +270,12 @@ public class Test18 {
     }
 
 
-    /**
+    */
+/**
      * Arrays.asList()方法创建的 ArrayList是Arrays中的ArrayList，这个并没有实现remove方法，
      * 调用list.remove()方法时，以其实现类中的方法为最准，但是这个Arrays中的ArrayList没有实现remove方法
-     */
+     *//*
+
     @Test
     public void test8(){
         //1
@@ -305,3 +318,4 @@ public class Test18 {
     }
 
 }
+*/
