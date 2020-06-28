@@ -146,6 +146,12 @@ public class PersonServiceImpl implements PersonService {
 
     }
 
+    @Override
+    public Integer getCount(String name) {
+        Integer integer=personMapper.getCount(name);
+        return integer;
+    }
+
     private void generateExcel(List<Student> list, String[] title, HttpServletResponse response) throws IOException {
     //创建工作簿
         Workbook workbook;

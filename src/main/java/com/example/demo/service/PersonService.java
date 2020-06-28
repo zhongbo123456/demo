@@ -29,4 +29,6 @@ public interface PersonService {
     void importData(MultipartFile file);
 
     void updateSecond(Integer integer);
+
+    Integer getCount(String name);
 }

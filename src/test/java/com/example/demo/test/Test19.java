@@ -63,7 +63,7 @@ public class Test19 {
      */
     @Test
     public void test5(){
-        String s="{\"machineType\":1,\n" +
+        String s="{\n" +
                 "\"seconds\":1,\n" +
                 "\"splices\":1,\n" +
                 "\"peakQuantile\":1,\n" +
@@ -78,9 +78,16 @@ public class Test19 {
                 "\"hourMinute\":[\"08:20-09:30\",\"10:00-11:20\"]\n" +
                 "}";
         JSONObject jsonObject = JSON.parseObject(s);
-        Integer machineType = (Integer) jsonObject.get("machineType");
+        Integer machineType = jsonObject.getObject("machineType", Integer.class);
         System.out.println(machineType);
+        Integer fftLenAudio = jsonObject.getObject("fftLenAudio", Integer.class);
+        System.out.println(fftLenAudio);
+
+        Float peakQuantile = jsonObject.getObject("peakQuantile", Float.class);
+        System.out.println(peakQuantile);
         String[] hourMinutes = jsonObject.getObject("hourMinute", String[].class);
+        int length = hourMinutes.length;
+        System.out.println("length:"+length);
         for (String hourMinute : hourMinutes) {
             System.out.println(hourMinute);
         }

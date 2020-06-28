@@ -64,43 +64,58 @@ public class StudentController {
     }
 
     @PostMapping("/getData")
-    public MyResult<List<Student1>> getData(@RequestBody List<Student1> list){
-        List<Student1> list1= personService.getData(list);
+    public MyResult<List<Student1>> getData(@RequestBody List<Student1> list) {
+        List<Student1> list1 = personService.getData(list);
         return MyResultUtils.success(list);
     }
 
     /**
      * 数据导入excel表格然后下载（带title）
+     *
      * @param response
      * @param title
      * @return
      */
     @GetMapping("/export")
     public void exportData(@RequestParam("title") String[] title,
-                               HttpServletResponse response) {
-        personService.exportData(response,title);
+                           HttpServletResponse response) {
+        personService.exportData(response, title);
     }
 
     /**
      * 导入excel
+     *
      * @param response
      */
     @GetMapping("/excel")
-    public void excelData(HttpServletResponse response){
+    public void excelData(HttpServletResponse response) {
         personService.excelData(response);
     }
 
 
     @PostMapping("/import")
-    public void importData(MultipartFile file){
+    public void importData(MultipartFile file) {
         personService.importData(file);
     }
 
     @GetMapping("/updateSecond")
-    public MyResult updateSecond(Integer integer){
+    public MyResult updateSecond(Integer integer) {
         personService.updateSecond(integer);
         return MyResultUtils.success();
     }
 
+    /**
+     * @MethodName: getCount
+     * @Param [name]
+     * @Return com.example.demo.model.MyResult
+     * @Description:
+     * @author: zhongbo
+     * @date: 2020/6/28 19:21
+     */
+    @GetMapping("/getCount")
+    public MyResult getCount(@RequestParam("name") String name) {
+       Integer integer= personService.getCount(name);
+        return MyResultUtils.success(integer);
+    }
 
 }
