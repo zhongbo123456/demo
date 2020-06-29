@@ -6,9 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import com.example.demo.entity.Student;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @BelongProjecet demo
@@ -108,6 +106,55 @@ public class Test19 {
         });
 
         System.out.println(JSON.toJSONString(list1));
+    }
+
+    @Test
+    public void test7(){
+        Object o=new Object();
+        JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(o));
+        Double max = jsonObject.getObject("value", Double.class);
+        if(max==null){
+            max=0d;
+        }
+        System.out.println(max);
+        Object o1=new Object();
+        JSONObject jsonObject1 = JSON.parseObject(JSON.toJSONString(o));
+        Double min = jsonObject1.getObject("value", Double.class);
+        if(min==null){
+            min=0d;
+        }
+        System.out.println(min);
+        Map<String, Double> map = new HashMap();
+        map.put("max", max);
+        map.put("min", min);
+        map.put("increase", max - min);
+        System.out.println(JSON.toJSONString(map));
+
+    }
+
+    /**
+     * @MethodName:  test8
+     * @Param []
+     * @Return void
+     * @Description: 类对象的三种创建方式
+     * @author: zhongbo
+     * @date:  2020/6/29 20:27
+     */
+    @Test
+    public void test8() throws NoSuchFieldException, ClassNotFoundException {
+        //类名.class
+        Class<Student> studentClass = Student.class;
+        String name = studentClass.getName();
+        System.out.println(name);
+        //对象名.getClass()
+        Student student=new Student();
+        Class<? extends Student> aClass = student.getClass();
+        String name1 = aClass.getName();
+        System.out.println(name1);
+        //Class.forName("类的全路径")
+        Class<?> aClass1 = Class.forName("com.example.demo.entity.Student");
+        String name2 = aClass1.getName();
+        System.out.println(name2);
     }
 
 }
