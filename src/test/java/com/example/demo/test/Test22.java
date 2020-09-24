@@ -2,6 +2,7 @@ package com.example.demo.test;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.entity.DeviceErrorNumber;
+import com.example.demo.entity.Student2;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
@@ -292,4 +293,86 @@ public class Test22 {
         System.out.println(Instant.now().toEpochMilli() / 1000);
         System.out.println(Timestamp.valueOf(LocalDateTime.now()).getTime() / 1000);
     }
+
+    @Test
+    public void test10(){
+        Date date = new Date(1598507471000L);
+        System.out.println("date = " + date);
+        Long reportTime=1598507471L;
+        Calendar instance = Calendar.getInstance();
+        System.out.println("instance.getTimeInMillis() = " + instance.getTimeInMillis()/1000);
+        instance.add(Calendar.MINUTE,30);
+        long l = instance.getTimeInMillis() / 1000;
+        System.out.println("l = " + l);
+        if(reportTime>l){
+            System.out.println("\"上报时间戳有错误\" = " + "上报时间戳有错误");
+        }
+        else {
+            System.out.println("\"ok\" = " + "ok");
+        }
+
+
+    }
+
+    @Test
+    public void test11(){
+        Double parentValue=10.0;
+        Double childValue=40.0;
+        double v = (parentValue - childValue) / parentValue * 100;
+        String s=v+"%";
+        System.out.println("s = " + s);
+        double d=33.38333333;
+        System.out.println("String.format(\"%.2f\", d) = " + String.format("%.2f", d));
+        System.out.println("0.0/10.0*100 = " + 0.0 / 10.0 * 100);
+    }
+
+    @Test
+    public void test12(){
+        String unitStr="{\"name\":\"zhangsan\",\"age\":1}";
+        List<String> unitList = new ArrayList<>();
+        if (StringUtils.isNotBlank(unitStr)) {
+
+            if (unitStr.contains(",")) {
+                unitList = Arrays.asList(unitStr.split(","));
+            }else {
+                unitList.add(unitStr);
+            }
+            System.out.println("JSON.toJSONString(unitList) = " + JSON.toJSONString(unitList));
+            System.out.println("unitList.get(0) = " + unitList.get(0));
+
+        }else {
+            System.out.println("JSON.toJSONString(unitList) = " + JSON.toJSONString(unitList));
+        }
+
+    }
+
+    /**
+     *对象不为空，值为空，不会报空指针
+     */
+    @Test
+    public void test13(){
+        Student student=new Student();
+        student.setAddress("zz");
+        Person person=new Person();
+        person.setAddress(student.getAddress());
+        System.out.println("student.getAge() = " + student.getAge());
+        person.setAge(student.getAge());
+        System.out.println("JSON.toJSONString(person) = " + JSON.toJSONString(person));
+    }
+
+    /**
+     * 37.4-null
+     */
+    @Test
+    public void test14(){
+        Float f=37.4f;
+        Student2 student2=new Student2();
+        student2.setName("z");
+        System.out.println("student2.getValue() = " + student2.getValue());
+        float v = f - student2.getValue();
+        System.out.println("v = " + v);
+
+    }
+
+    
 }
