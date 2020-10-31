@@ -373,6 +373,33 @@ public class Test22 {
         System.out.println("v = " + v);
 
     }
+    @Test
+    public void test15(){
+        Object o=new Object();
+        o=null;
+        if(o!=null){
+            System.out.println("true = " + true);
+        }else{
+            System.out.println("false = " + false);
+        }
+    }
+    @Test
+    public void test16(){
+        com.example.demo.entity.Student student=new com.example.demo.entity.Student();
+        student.setAge(20);
+        student.setAddress("文化路");
+        //student.setName("{\"name\":\"z\"}");
+        Student2 student2;
+        if(student!=null){
+            student2 = JSON.parseObject(student.getName(), Student2.class);
+        }else {
+            student2=new Student2();
+        }
+        student2.setName("affaf");
+
+
+    }
+    
 
     
 }

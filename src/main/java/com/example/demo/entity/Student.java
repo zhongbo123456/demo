@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
+
 public class Student {
     private int id;
     private String name;
@@ -16,19 +16,52 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Student(int id, Integer age, String address) {
-        this.id = id;
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public Student(int id, String address) {
-        this.id = id;
-        this.address = address;
+    public List<String> getCourseNames() {
+        return courseNames;
+    }
+
+    public void setCourseNames(List<String> courseNames) {
+        this.courseNames = courseNames;
     }
 }
 
