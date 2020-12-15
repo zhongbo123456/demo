@@ -1,10 +1,10 @@
 package com.example.demo.test;
 
 import com.alibaba.fastjson.JSON;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
-import com.example.demo.test.Student;
-import javax.xml.crypto.Data;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -76,7 +76,7 @@ public class Test11 {
         list.add(s1);
         list.add(s4);
         list.add(s3);
-        System.out.println("list:"+list.toString());
+        System.out.println("list:"+list.toString());//[a_2, b_1, d_4, c_3]
         //把list里按照_后面的1，2，3，4排列，结果为[b_1, a_2, c_3, d_4]
         if(list.get(0).contains("_")){
             StringSort("_",list);
@@ -227,6 +227,125 @@ public class Test11 {
         }
         System.out.println(startTimeDateList);
     }
+
+    @Test
+    public void test10(){
+        int companyId=596;
+        Long company_id=596L;
+        if(companyId==company_id.longValue()){
+            System.out.println("\"success\" = " + "success");
+        }else {
+            System.out.println("\"error\" = " + "error");
+        }
+
+    }
+    @Test
+    public void test11(){
+//        List<Integer> list=new ArrayList<>();
+//        list.add(596);
+//        list.add(139);
+        List<Integer> list = Arrays.asList(596, 139);
+        Long company_id=596L;
+        if(list.contains(company_id.intValue())){
+            System.out.println("\"success\" = " + "success");
+        }else {
+            System.out.println("\"error\" = " + "error");
+        }
+    }
+    @Test
+    public void test12() throws UnsupportedEncodingException {
+        String ENCODING = "UTF-8";
+        String TOKEN = "energy#12&56*_.@data";
+        long currentTimeMillis = System.currentTimeMillis();
+        String str = TOKEN + 1603220648000L;
+        //byte[] b = Base64.encodeBase64(str.getBytes(ENCODING));
+        byte[] b = Base64.getEncoder().encode(str.getBytes(ENCODING));
+        String s = new String(b, ENCODING);
+        System.out.println("s.length() = " + s.length());
+        System.out.println("s = " + s);
+
+    }
+    @Test
+    public void test13(){
+        String token="ZW5lcmd5IzEyJjU2Kl8uQGRhdGExNjAzMjYwNDgwMDAw";
+        System.out.println("token.length() = " + token.length());
+
+        String token1="ZW5lcmd5IzEyJjU2Kl8uQGRhdGExNjAzMjQ5MjAwMDE1";
+        System.out.println("token1.length() = " + token1.length());
+    }
+    @Test
+    public void test14(){
+        List<Integer> list=new ArrayList<>();
+        list.add(0,8);
+        list.add(1,9);
+        list.add(2,8);
+        list.add(3,7);
+        list.add(4,10);
+        list.add(5,5);
+        list.add(6,2);
+        list.add(7,3);
+        list.add(8,2);
+        list.add(9,1);
+        System.out.println("JSON.toJSONString(list) = " + JSON.toJSONString(list));
+
+//        for (int i = 0; i < list.size(); i++) {
+//            if (i+1<=list.size()-1) {
+//                if (list.get(i) < list.get(i + 1)) {
+//                    list.remove(i);
+//                    list.add(i,list.get(i));
+//                }
+//            }
+//
+//        }
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (i - 1 >= 0) {
+                Integer firstValue = list.get(i);
+                Integer secondValue = list.get(i - 1);
+                if (secondValue < firstValue) {
+                    list.remove(i-1);
+                    list.add(i-1, firstValue);
+                }
+            }
+
+        }
+        System.out.println("JSON.toJSONString(list) = " + JSON.toJSONString(list));
+
+    }
+
+    @Test
+    public void test15(HttpServletResponse response){
+        System.out.println("JSON.toJSONString(response) = " + JSON.toJSONString(response));
+
+    }
+
+    @Test
+    public void test16(){
+        byte[] bytes =new byte[4];
+        bytes[0]= (byte)1 & 0xFE;
+        bytes[1] = (byte)(1 >> 8) & 0xFF;
+        bytes[2]= (byte)1 & 0xFE;
+        bytes[3] = (byte)(1 >> 8) & 0xFF;
+        System.out.println("bytes[0] = " + bytes[0]);
+        System.out.println("bytes[1] = " + bytes[1]);
+        System.out.println("bytes[2] = " + bytes[2]);
+        System.out.println("bytes[3] = " + bytes[3]);
+
+    }
+
+    @Test
+    public void test17(){
+        short val=97;
+        byte[] b = new byte[2];
+        b[0] = (byte) ((val >> 8) & 0xff);
+        b[1] = (byte) (val & 0xff);
+        System.out.println("b[0] = " + b[0]);
+        System.out.println("b[1] = " + b[1]);
+        System.out.println("new java.lang.String(b) = " + new java.lang.String(b));
+    }
+
+
+
+
 
 
 

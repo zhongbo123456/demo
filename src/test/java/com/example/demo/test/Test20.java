@@ -2,11 +2,10 @@ package com.example.demo.test;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
+import org.springframework.boot.test.json.JsonbTester;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @BelongProjecet demo
@@ -106,6 +105,36 @@ public class Test20 {
         list2.add("B");
         map.put("110",list2);
         System.out.println(JSON.toJSONString(map));
+
+    }
+
+    /**
+     * Collections.sort()方法和流中排序方法
+     */
+    @Test
+    public void test6(){
+        List<String> list = Arrays.asList("data2_admin");
+        list.stream().forEach(s -> {
+            System.out.println("s = " + s);
+        });
+        System.out.println("JSON.toJSONString(list) = " + JSON.toJSONString(list));
+
+        List<String> list1 = Arrays.asList("d", "c", "b", "a");
+        System.out.println("JSON.toJSONString(list1) before= " + JSON.toJSONString(list1));
+
+        List<String> collect1 = list1.stream().sorted().collect(Collectors.toList());
+        System.out.println("JSON.toJSONString(collect1) stream= " + JSON.toJSONString(collect1));
+
+        Collections.sort(list1);
+        System.out.println("JSON.toJSONString(list1) after= " + JSON.toJSONString(list1));
+
+        List<Integer> integers = Arrays.asList(4, 5, 9, 7, 2, 0);
+        List<Integer> collect = integers.stream().sorted().collect(Collectors.toList());
+        System.out.println("JSON.toJSONString(collect) stream= " + JSON.toJSONString(collect));
+        System.out.println("JSON.toJSONString(integers) before= " + JSON.toJSONString(integers));
+        Collections.sort(integers);
+        System.out.println("JSON.toJSONString(integers) after= " + JSON.toJSONString(integers));
+
 
     }
 
