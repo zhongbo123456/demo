@@ -11,4 +11,6 @@ public interface UserService {
     BatchRequest testAsyn();
 
     void handle(BatchRequest batchRequest);
+
+    User selectUserMessage(Long userId);
 }

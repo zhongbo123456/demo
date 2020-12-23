@@ -45,6 +45,12 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public User selectUserMessage(Long userId) {
+        User user=userMapper.selectUsrMesage(userId);
+        return user;
+    }
+
 
     private BatchRequest createBatchRequest() {
         BatchRequest batchRequest=new BatchRequest();
